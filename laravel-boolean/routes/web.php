@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/layout-boolean', function () {
     return view('home');
 })->name('homepage');
+
+Route::get('/contattaci', function() {
+    return view('contatti');
+})->name('contatti');
+
+Route::get('/faq', function() {
+    $faqs = config('faq.lista_faq');
+    return view('faq')->with(['domande_risposte' => $faqs]);
+})->name('faq');
